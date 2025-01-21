@@ -7,7 +7,7 @@ MAX_STEPS = 2000
 steps_dict = { 
     "steps" : []
 }
-subprocess.run(["mkdir","-p","tmp")
+subprocess.run(["mkdir","-p","tmp"])
 with open("tmp/output.txt", "w",encoding="UTF-8") as f:
     subprocess.run(["bazel",
                 "query",
