@@ -1,6 +1,3 @@
 steps:
-  - command: python3 .buildkite/scripts/build_yaml_file.py
-    label: ":hammer: Build python steps"
-  - wait: "~"
-  - label: ":pipeline: Load Pipeline"
-    command: "buildkite-agent pipeline upload pipeline_steps.yml"
+  - command: python3 .buildkite/scripts/build_yaml_file.py && buildkite-agent pipeline upload tmp/pipeline_steps.yml
+    label: ":hammer: Build & Load python steps"
