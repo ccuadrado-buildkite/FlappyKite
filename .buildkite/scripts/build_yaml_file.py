@@ -4,8 +4,8 @@ import subprocess
 BUILD_TARGETS = {} 
 MAX_STEPS = 2000
 
-BAZEL_CACHE_USER = subprocess.run(["buildkite", "agent", "secret", "get", "BAZEL_CACHE_USER"])
-BAZEL_CACHE_PASSWORD = subprocess.run(["buildkite", "agent", "secret", "get", "BAZEL_CACHE_PASSWORD"])
+BAZEL_CACHE_USER = subprocess.run(["buildkite-agent", "secret", "get", "BAZEL_CACHE_USER"])
+BAZEL_CACHE_PASSWORD = subprocess.run(["buildkite-agent", "secret", "get", "BAZEL_CACHE_PASSWORD"])
 
 steps_dict = { 
     "steps" : []
