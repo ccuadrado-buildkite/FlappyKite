@@ -26,7 +26,7 @@ def parse_line(line):
         return
     BUILD_TARGETS[int(key)] = [target]
     
-with open('output.txt') as fp:
+with open('tmp/output.txt') as fp:
     for line in fp:
         parse_line(line)
     fp.close()
