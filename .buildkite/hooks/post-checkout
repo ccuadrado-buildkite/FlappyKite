@@ -1,2 +1,4 @@
+sleep 30
+brew install python3
 .buildkite/scripts/install-dependencies.sh
-python .buildkite/scripts/build_yaml_file.py
+python3 .buildkite/scripts/build_yaml_file.py
