@@ -1,4 +1,5 @@
 import yaml
+import subprocess
 
 BUILD_TARGETS = {} 
 MAX_STEPS = 2000
@@ -6,6 +7,16 @@ MAX_STEPS = 2000
 steps_dict = { 
     "steps" : []
 }
+subprocess.run(["mkdir","-p","tmp")
+with open("tmp/output.txt", "w",encoding="UTF-8") as f:
+    subprocess.run(["bazel",
+                "query",
+                'deps(//FlappyKite:FlappyKite)',
+                "--notool_deps", 
+                "--output", "maxrank"],
+                check=True,
+                stdout=f)
+f.close()
 
 def parse_line(line):
     key,target = line.split(" ",1)
@@ -39,7 +50,7 @@ def build_step_yaml():
         steps_dict["steps"].append({"wait":"Waiting for all nodes at depth to complete"})
         
    
-    with open('pipeline_steps.yml', 'w') as outfile:
+    with open('tmp/pipeline_steps.yml', 'w') as outfile:
         yaml.safe_dump(steps_dict, outfile,default_flow_style=False,sort_keys=False,default_style='')
     outfile.close()
     

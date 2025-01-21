@@ -46,3 +46,5 @@ fastlane/test_output/report.junit
 # Bazel related paths
 bazel-*
 .build
+tmp/
+pipeline_steps.yml

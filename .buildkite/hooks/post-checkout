@@ -1,0 +1,2 @@
+.buildkite/scripts/install-dependencies.sh
+python .buildkite/scripts/build_yaml_file.py
