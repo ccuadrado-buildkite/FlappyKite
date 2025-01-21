@@ -4,6 +4,9 @@ import subprocess
 BUILD_TARGETS = {} 
 MAX_STEPS = 2000
 
+BAZEL_CACHE_USER = subprocess.run(["buildkite", "agent", "secret", "get", "BAZEL_CACHE_USER"])
+BAZEL_CACHE_PASSWORD = subprocess.run(["buildkite", "agent", "secret", "get", "BAZEL_CACHE_PASSWORD"])
+
 steps_dict = { 
     "steps" : []
 }
@@ -32,7 +35,7 @@ with open('tmp/output.txt') as fp:
     fp.close()
 
 def bazel_build_command(target):
-    return {"command": f"bazel build --remote_cache='https://$(buildkite agent secret get BAZEL_CACHE_USER):$(buildkite agent secret get BAZEL_CACHE_PASSWORD)@d21iffeagoqk7s.cloudfront.net' %s" % (target)}
+    return {"command": f"bazel build --remote_cache='https://{BAZEL_CACHE_USER}:{BAZEL_CACHE_PASSWORD}@d21iffeagoqk7s.cloudfront.net' %s" % (target)}
 
 def build_step_yaml():
     step = 0
