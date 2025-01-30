@@ -42,13 +42,15 @@ def build_step_yaml():
         for target in BUILD_TARGETS[starting_key]:
             print(f"Adding {target.rstrip()} to build steps")
             if step <= MAX_STEPS:
-                steps_dict["steps"].append(bazel_build_command(target.rstrip()))
-                step += 1
+                if target.startswith("//"):
+                    steps_dict["steps"].append(bazel_build_command(target.rstrip()))
+                    step += 1
             else:
                 print(f"Max Step Count Reached, at level {starting_key} Aborting...")
                 break
         starting_key -= 1
-        steps_dict["steps"].append({"wait":"Waiting for all nodes at depth to complete"})
+        if len(steps_dict["steps"]) > 1 and (steps_dict["steps"][-1] != {"wait":"Waiting for all nodes at depth to complete"} or steps_dict["steps"][-1] != None):
+            steps_dict["steps"].append({"wait":"Waiting for all nodes at depth to complete"})
         
    
     with open('tmp/pipeline_steps.yml', 'w') as outfile:
