@@ -5,6 +5,4 @@ python3 -m pip install PyYAML
 export CACHE_USER=$(buildkite-agent secret get BAZEL_CACHE_USER)
 export CACHE_PASSWORD=$(buildkite-agent secret get BAZEL_CACHE_PASSWORD)
 mkdir -p tmp
-echo "--remote_cache='https://$CACHE_USER:$CACHE_PASSWORD@d21iffeagoqk7s.cloudfront.net'" > tmp/.bazelrc
-chmod +x .buildkite/scripts/install-dependencies.sh
-.buildkite/scripts/install-dependencies.sh
+echo "--remote_cache='https://$CACHE_USER:$CACHE_PASSWORD@d21iffeagoqk7s.cloudfront.net'" >> .bazelrc

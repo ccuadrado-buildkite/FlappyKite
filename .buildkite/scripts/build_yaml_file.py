@@ -33,7 +33,8 @@ with open('tmp/output.txt') as fp:
     fp.close()
 
 def bazel_build_command(target):
-    return {"command": f"bazel --bazelrc=tmp/.bazelrc build '%s'" % (target)}
+    return {"command": f"bazel --bazelrc=.bazelrc build '%s'" % (target),
+            "label": "%s" % {target}}
 
 def build_step_yaml():
     step = 0
