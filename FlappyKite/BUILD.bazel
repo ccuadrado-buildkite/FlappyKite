@@ -42,6 +42,7 @@ expand_template(
         "$(MARKETING_VERSION)": "2024.12",
         "$(SENTRY_DSN_HOST)": "",
         "$(SENTRY_DSN_PATH)": "",
+        "$(APPLE_SDK_PLATFORM)": "iPhoneOS"
     },
     template = "Info.plist",
 )

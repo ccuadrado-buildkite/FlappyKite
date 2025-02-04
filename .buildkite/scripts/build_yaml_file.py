@@ -14,7 +14,7 @@ with open("tmp/output.txt", "w",encoding="UTF-8") as f:
                 "query",
                 'deps(//FlappyKite:FlappyKite)',
                 "--notool_deps", 
-                "--output", "maxrank"],
+                "--output", "minrank"],
                 check=True,
                 stdout=f)
 f.close()
@@ -34,7 +34,7 @@ with open('tmp/output.txt') as fp:
 
 def bazel_build_command(target):
     return {"command": f"bazel --bazelrc=.bazelrc build '%s'" % (target),
-            "label": "%s" % {target}}
+            "label": "%s" % target}
 
 def build_step_yaml():
     step = 0
