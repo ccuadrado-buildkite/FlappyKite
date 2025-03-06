@@ -2,7 +2,7 @@ import yaml
 import subprocess
 
 BUILD_TARGETS = {} 
-MAX_STEPS = 2000
+MAX_STEPS = 2500
 
 steps_dict = { 
     "steps" : []
